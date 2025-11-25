@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Reel Clone</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <section>
+        <div class="allreels">
+            <!-- reel dyanamically displayed using javascript -->
+          <div class="reel">
+            <video src="./reels/v1.mp4" autoplay loop></video>
+            <div class="bottom">
+              <div class="user">
+                <img
+                  src="https://i.pinimg.com/736x/8f/85/80/8f8580000cb3bee96d38255b00f1faed.jpg"
+                  alt=""
+                />
+                <h4>@username</h4>
+                <button id="follow-btn">Follow</button>
+              </div>
+              <h3>Indian family #shorts #indian #chotabhai #school</h3>
+            </div>
+
+            <div class="right">
+              <div class="like">
+                <h4 class="like-icon"><i class="ri-heart-line"></i></h4>
+                <h6>200</h6>
+              </div>
+              <div class="comment">
+                <h4 class="comment-icon"><i class="ri-chat-3-line"></i></h4>
+                <h6>51</h6>
+              </div>
+
+              <div class="share">
+                <h4 class="share-icon">
+                  <i class="ri-share-forward-fill"></i>
+                </h4>
+                <h6>10</h6>
+              </div>
+              <div class="menu">
+                <h4 class="menu-icon"><i class="ri-more-2-fill"></i></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
