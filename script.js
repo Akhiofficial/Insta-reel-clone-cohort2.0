@@ -18,7 +18,7 @@ const reelsData = [
     likeCount: 15420,
     commentCount: 98,
     isLiked: false,
-    caption: "Sunset vibes 🌇 #travel",
+    caption: "concert vibes 🌇 #concert",
     shareCount: 64,
     userProfileImage:
       "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg",
@@ -107,7 +107,6 @@ const reelsData = [
 
 let allreels = document.querySelector(".allreels");
 
-
 // shows reel dyanmically
 function addData() {
   let sum = "";
@@ -115,9 +114,15 @@ function addData() {
     sum =
       sum +
       `<div class="reel">
-            <video src="${elems.video}" autoplay ${elems.isMuted ? "muted" : ""} loop></video>
+            <video src="${elems.video}" autoplay ${
+        elems.isMuted ? "muted" : ""
+      } loop></video>
             <div class="mute" id="${idx}">
-            ${elems.isMuted ? '<i class="ri-volume-mute-line"></i>' : '<i class="ri-volume-up-line"></i>'}
+            ${
+              elems.isMuted
+                ? '<i class="ri-volume-mute-line"></i>'
+                : '<i class="ri-volume-up-line"></i>'
+            }
       </div>
             <div class="bottom">
               <div class="user">
@@ -165,3 +170,34 @@ function addData() {
 
 addData();
 
+allreels.addEventListener("click", function (deats) {
+
+  if (deats.target.className == "like") {
+    if (!reelsData[deats.target.id].isLiked) {
+      reelsData[deats.target.id].likeCount++;
+      reelsData[deats.target.id].isLiked = true;
+    } else {
+      reelsData[deats.target.id].likeCount--;
+      reelsData[deats.target.id].isLiked = false;
+    }
+  }
+
+  if (deats.target.className == "follow") {
+    if (!reelsData[deats.target.id].isFollowed) {
+      reelsData[deats.target.id].isFollowed = true;
+    } else {
+      reelsData[deats.target.id].isFollowed = false;
+    }
+  }
+
+  if (deats.target.className == "mute") {
+    if (!reelsData[deats.target.id].isMuted) {
+      reelsData[deats.target.id].isMuted = true;
+    } else {
+      reelsData[deats.target.id].isMuted = false;
+    }
+  }
+
+
+  addData();
+});
