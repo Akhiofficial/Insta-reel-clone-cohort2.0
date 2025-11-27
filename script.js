@@ -97,13 +97,15 @@ const reelsData = [
   },
 ];
 
-sum = " ";
+let allreels = document.querySelector(".allreels");
 
-reelsData.forEach(function (elems) {
-  sum =
-    sum +
-    `<div class="reel">
-            <video src="${elems.video}" autoplay loop></video>
+function addData() {
+  let sum = "";
+  reelsData.forEach(function (elems, idx) {
+    sum =
+      sum +
+      `<div class="reel">
+            <video src="${elems.video}" autoplay muted loop></video>
             <div class="bottom">
               <div class="user">
                 <img
@@ -119,12 +121,12 @@ reelsData.forEach(function (elems) {
             </div>
 
             <div class="right">
-              <div class="like">
+              <div id="${idx}" class="like">
                 <h4 class="like-icon">${
-                  elems.isLiked
-                    ? "<i class=' love ri-heart-fill'></i>"
-                    : "<i class=' ri-heart-line'></i>"
-                } </h4>
+        elems.isLiked
+          ? "<i class=' love ri-heart-fill'></i>"
+          : "<i class=' ri-heart-line'></i>"
+      } </h4>
                 <h6>${elems.likeCount}</h6>
               </div>
               <div class="comment">
@@ -143,8 +145,16 @@ reelsData.forEach(function (elems) {
               </div>
             </div>
           </div>`;
+  });
+
+  allreels.innerHTML = sum;
+}
+
+addData();
+
+allreels.addEventListener("click", function (deats) {
+  console.log(deats.target.id);
+  
 });
 
-console.log(sum);
 
-document.querySelector(".allreels").innerHTML = sum;
