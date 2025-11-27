@@ -1,5 +1,6 @@
 const reelsData = [
   {
+    isMuted: true,
     username: "akhilesh",
     likeCount: 23800,
     commentCount: 253,
@@ -12,6 +13,7 @@ const reelsData = [
     isFollowed: false,
   },
   {
+    isMuted: true,
     username: "natureshots",
     likeCount: 15420,
     commentCount: 98,
@@ -24,6 +26,7 @@ const reelsData = [
     isFollowed: true,
   },
   {
+    isMuted: true,
     username: "streetlens",
     likeCount: 18760,
     commentCount: 142,
@@ -36,6 +39,7 @@ const reelsData = [
     isFollowed: true,
   },
   {
+    isMuted: true,
     username: "fitwithme",
     likeCount: 9200,
     commentCount: 45,
@@ -48,6 +52,7 @@ const reelsData = [
     isFollowed: false,
   },
   {
+    isMuted: true,
     username: "fooddiaries",
     likeCount: 13250,
     commentCount: 76,
@@ -60,6 +65,7 @@ const reelsData = [
     isFollowed: true,
   },
   {
+    isMuted: true,
     username: "codecraft",
     likeCount: 8400,
     commentCount: 61,
@@ -72,6 +78,7 @@ const reelsData = [
     isFollowed: false,
   },
   {
+    isMuted: true,
     username: "petplanet",
     likeCount: 21050,
     commentCount: 203,
@@ -84,6 +91,7 @@ const reelsData = [
     isFollowed: true,
   },
   {
+    isMuted: true,
     username: "artbyana",
     likeCount: 7350,
     commentCount: 34,
@@ -99,13 +107,18 @@ const reelsData = [
 
 let allreels = document.querySelector(".allreels");
 
+
+// shows reel dyanmically
 function addData() {
   let sum = "";
   reelsData.forEach(function (elems, idx) {
     sum =
       sum +
       `<div class="reel">
-            <video src="${elems.video}" autoplay muted loop></video>
+            <video src="${elems.video}" autoplay ${elems.isMuted ? "muted" : ""} loop></video>
+            <div class="mute" id="${idx}">
+            ${elems.isMuted ? '<i class="ri-volume-mute-line"></i>' : '<i class="ri-volume-up-line"></i>'}
+      </div>
             <div class="bottom">
               <div class="user">
                 <img
@@ -113,9 +126,9 @@ function addData() {
                   alt=""
                 />
                 <h4>@${elems.username}</h4>
-                <button id="follow-btn">${
-                  elems.isFollowed ? "Unfollow" : "Follow"
-                }</button>
+                <button class="follow" id="${idx}">${
+        elems.isFollowed ? "Unfollow" : "Follow"
+      }</button>
               </div>
               <h3>${elems.caption}</h3>
             </div>
@@ -123,10 +136,10 @@ function addData() {
             <div class="right">
               <div id="${idx}" class="like">
                 <h4 class="like-icon">${
-        elems.isLiked
-          ? "<i class=' love ri-heart-fill'></i>"
-          : "<i class=' ri-heart-line'></i>"
-      } </h4>
+                  elems.isLiked
+                    ? "<i class=' love ri-heart-fill'></i>"
+                    : "<i class=' ri-heart-line'></i>"
+                } </h4>
                 <h6>${elems.likeCount}</h6>
               </div>
               <div class="comment">
@@ -151,10 +164,4 @@ function addData() {
 }
 
 addData();
-
-allreels.addEventListener("click", function (deats) {
-  console.log(deats.target.id);
-  
-});
-
 
